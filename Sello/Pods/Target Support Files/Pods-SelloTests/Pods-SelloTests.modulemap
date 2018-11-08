@@ -1,0 +1,6 @@
+framework module Pods_SelloTests {
+  umbrella header "Pods-SelloTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
