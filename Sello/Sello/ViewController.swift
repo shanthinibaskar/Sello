@@ -9,11 +9,17 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
     var listings: [Listing] = []
     
-
+    
+    
+    
     override func viewDidLoad() {
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        
         super.viewDidLoad()
         let db = Firestore.firestore()
 
