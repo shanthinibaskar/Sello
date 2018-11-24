@@ -11,13 +11,16 @@
 		45A686A836B60AE3E9EDF7BB /* Pods_SelloUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2255DAAAF15C91A7E65461B /* Pods_SelloUITests.framework */; };
 		9D15940A2E051D3F47A0732A /* Pods_SelloTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBF1D8BA4699A516F71F5A0 /* Pods_SelloTests.framework */; };
 		B4FFFAD987E780744D74B323 /* Pods_Sello.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA24D8F8EE8305BBEF5AF31 /* Pods_Sello.framework */; };
+		E467305321A9D8E200B3B4F9 /* Podfile2 in Resources */ = {isa = PBXBuildFile; fileRef = E467305221A9D8E200B3B4F9 /* Podfile2 */; };
+		E4A839E721A918C500F2EDF4 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E4A839E621A918C500F2EDF4 /* Podfile */; };
 		E4AF36482193B5B30059AE6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF36472193B5B30059AE6B /* AppDelegate.swift */; };
-		E4AF364A2193B5B30059AE6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF36492193B5B30059AE6B /* ViewController.swift */; };
+		E4AF364A2193B5B30059AE6B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF36492193B5B30059AE6B /* ChatViewController.swift */; };
 		E4AF364D2193B5B30059AE6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4AF364B2193B5B30059AE6B /* Main.storyboard */; };
 		E4AF364F2193B5B50059AE6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4AF364E2193B5B50059AE6B /* Assets.xcassets */; };
 		E4AF36522193B5B50059AE6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4AF36502193B5B50059AE6B /* LaunchScreen.storyboard */; };
 		E4AF365D2193B5B50059AE6B /* SelloTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF365C2193B5B50059AE6B /* SelloTests.swift */; };
 		E4AF36682193B5B60059AE6B /* SelloUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF36672193B5B60059AE6B /* SelloUITests.swift */; };
+		E4BA147321A9DDD900618D3C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA147221A9DDD900618D3C /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,9 +51,11 @@
 		9EBF1D8BA4699A516F71F5A0 /* Pods_SelloTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SelloTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2255DAAAF15C91A7E65461B /* Pods_SelloUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SelloUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA24D8F8EE8305BBEF5AF31 /* Pods_Sello.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sello.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E467305221A9D8E200B3B4F9 /* Podfile2 */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile2; sourceTree = "<group>"; };
+		E4A839E621A918C500F2EDF4 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		E4AF36442193B5B30059AE6B /* Sello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sello.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4AF36472193B5B30059AE6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E4AF36492193B5B30059AE6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E4AF36492193B5B30059AE6B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E4AF364C2193B5B30059AE6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E4AF364E2193B5B50059AE6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E4AF36512193B5B50059AE6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -61,6 +66,8 @@
 		E4AF36632193B5B60059AE6B /* SelloUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SelloUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4AF36672193B5B60059AE6B /* SelloUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelloUITests.swift; sourceTree = "<group>"; };
 		E4AF36692193B5B60059AE6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4BA147121A9DC6600618D3C /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		E4BA147221A9DDD900618D3C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +124,8 @@
 		E4AF363B2193B5B30059AE6B = {
 			isa = PBXGroup;
 			children = (
+				E4BA147221A9DDD900618D3C /* Constants.swift */,
+				E4BA147121A9DC6600618D3C /* Bridging-Header.h */,
 				E4AF36462193B5B30059AE6B /* Sello */,
 				E4AF365B2193B5B50059AE6B /* SelloTests */,
 				E4AF36662193B5B60059AE6B /* SelloUITests */,
@@ -140,10 +149,12 @@
 			isa = PBXGroup;
 			children = (
 				E4AF36472193B5B30059AE6B /* AppDelegate.swift */,
-				E4AF36492193B5B30059AE6B /* ViewController.swift */,
+				E4AF36492193B5B30059AE6B /* ChatViewController.swift */,
 				E4AF364B2193B5B30059AE6B /* Main.storyboard */,
+				E4A839E621A918C500F2EDF4 /* Podfile */,
 				E4AF364E2193B5B50059AE6B /* Assets.xcassets */,
 				E4AF36502193B5B50059AE6B /* LaunchScreen.storyboard */,
+				E467305221A9D8E200B3B4F9 /* Podfile2 */,
 				E4AF36532193B5B50059AE6B /* Info.plist */,
 				03ACF11E2193C941000D5783 /* GoogleService-Info.plist */,
 			);
@@ -276,10 +287,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4A839E721A918C500F2EDF4 /* Podfile in Resources */,
 				E4AF36522193B5B50059AE6B /* LaunchScreen.storyboard in Resources */,
 				03ACF11F2193C941000D5783 /* GoogleService-Info.plist in Resources */,
 				E4AF364F2193B5B50059AE6B /* Assets.xcassets in Resources */,
 				E4AF364D2193B5B30059AE6B /* Main.storyboard in Resources */,
+				E467305321A9D8E200B3B4F9 /* Podfile2 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,15 +318,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-SelloTests-checkManifestLockResult.txt",
 			);
@@ -327,15 +336,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-SelloUITests-checkManifestLockResult.txt",
 			);
@@ -349,18 +354,22 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Sello/Pods-Sello-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,15 +382,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Sello-checkManifestLockResult.txt",
 			);
@@ -397,8 +402,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4AF364A2193B5B30059AE6B /* ViewController.swift in Sources */,
+				E4AF364A2193B5B30059AE6B /* ChatViewController.swift in Sources */,
 				E4AF36482193B5B30059AE6B /* AppDelegate.swift in Sources */,
+				E4BA147321A9DDD900618D3C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +587,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Sello.Sello;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -600,6 +607,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Sello.Sello;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

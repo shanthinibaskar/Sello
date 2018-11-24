@@ -1,0 +1,6 @@
+framework module Pods_Sello {
+  umbrella header "Pods-Sello-umbrella.h"
+
+  export *
+  module * { export * }
+}
