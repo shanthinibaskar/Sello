@@ -6,11 +6,14 @@ target 'Sello' do
   use_frameworks!
   pod 'Firebase/Core'
 <<<<<<< HEAD
+<<<<<<< HEAD
   pod 'Firebase/Core'
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'JSQMessagesViewController'
+=======
+>>>>>>> parent of 9684bbc... Firestore
 =======
 >>>>>>> parent of 9684bbc... Firestore
   platform :ios, '11.4'

@@ -241,6 +241,7 @@
 			<string>Apache</string>
 			<key>Title</key>
 <<<<<<< HEAD
+<<<<<<< HEAD
 			<string>FirebaseAuth</string>
 =======
 			<string>FirebaseCore</string>
@@ -259,11 +260,15 @@
 =======
 			<string>FirebaseInstanceID</string>
 >>>>>>> parent of 9684bbc... Firestore
+=======
+			<string>FirebaseCore</string>
+>>>>>>> parent of 9684bbc... Firestore
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
 			<key>FooterText</key>
+<<<<<<< HEAD
 <<<<<<< HEAD
 			<string>
                                  Apache License
@@ -468,9 +473,13 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 </string>
+=======
+			<string>Copyright 2018 Google</string>
+>>>>>>> parent of 9684bbc... Firestore
 			<key>License</key>
-			<string>Apache</string>
+			<string>Copyright</string>
 			<key>Title</key>
+<<<<<<< HEAD
 			<string>FirebaseCore</string>
 =======
 			<string>Copyright 2018 Google</string>
@@ -691,17 +700,27 @@
 			<string>Apache</string>
 			<key>Title</key>
 			<string>FirebaseDatabase</string>
+=======
+			<string>FirebaseInstanceID</string>
+>>>>>>> parent of 9684bbc... Firestore
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
 			<key>FooterText</key>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 9684bbc... Firestore
 			<string>Copyright 2018 Google</string>
 			<key>License</key>
 			<string>Copyright</string>
 			<key>Title</key>
+<<<<<<< HEAD
 			<string>FirebaseInstanceID</string>
+=======
+			<string>GoogleAppMeasurement</string>
+>>>>>>> parent of 9684bbc... Firestore
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
@@ -913,6 +932,7 @@
 			<key>License</key>
 			<string>Apache</string>
 			<key>Title</key>
+<<<<<<< HEAD
 			<string>FirebaseStorage</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
@@ -1347,12 +1367,15 @@
 			<key>License</key>
 			<string>Apache</string>
 			<key>Title</key>
+=======
+>>>>>>> parent of 9684bbc... Firestore
 			<string>GoogleUtilities</string>
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 		</dict>
 		<dict>
 			<key>FooterText</key>
+<<<<<<< HEAD
 			<string>
 MIT License
 Copyright (c) 2013-present Jesse Squires
@@ -1450,6 +1473,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+=======
+>>>>>>> parent of 9684bbc... Firestore
 =======
 >>>>>>> parent of 9684bbc... Firestore
 			<string>Copyright (c) 2011 Petteri Aimonen &lt;jpa at nanopb.mail.kapsi.fi&gt;
