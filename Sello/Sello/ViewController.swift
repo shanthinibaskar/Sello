@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIApplicationDelegate {
     var listings: [Listing] = []
     
 
