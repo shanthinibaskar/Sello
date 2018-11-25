@@ -11,7 +11,11 @@ Copyright 2018 Google
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## FirebaseAuth
+=======
+## FirebaseCore
+>>>>>>> parent of 9684bbc... Firestore
 =======
 ## FirebaseCore
 >>>>>>> parent of 9684bbc... Firestore
@@ -226,6 +230,9 @@ Copyright 2018 Google
 
 
 ## FirebaseInstanceID
+<<<<<<< HEAD
+>>>>>>> parent of 9684bbc... Firestore
+=======
 >>>>>>> parent of 9684bbc... Firestore
 
 Copyright 2018 Google
@@ -236,7 +243,11 @@ Copyright 2018 Google
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## FirebaseAuthInterop
+=======
+## GoogleUtilities
+>>>>>>> parent of 9684bbc... Firestore
 =======
 ## GoogleUtilities
 >>>>>>> parent of 9684bbc... Firestore
@@ -435,6 +446,7 @@ Copyright 2018 Google
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
    You may obtain a copy of the License at
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 ## FirebaseInstanceID
@@ -1271,6 +1283,8 @@ Copyright 2018 Google
    You may obtain a copy of the License at
 =======
 >>>>>>> parent of 9684bbc... Firestore
+=======
+>>>>>>> parent of 9684bbc... Firestore
 
        http://www.apache.org/licenses/LICENSE-2.0
 
@@ -1281,6 +1295,7 @@ Copyright 2018 Google
    limitations under the License.
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 ## GoogleAppMeasurement
 
@@ -1571,6 +1586,8 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
+=======
+>>>>>>> parent of 9684bbc... Firestore
 =======
 >>>>>>> parent of 9684bbc... Firestore
 =======
