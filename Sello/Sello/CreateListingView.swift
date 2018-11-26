@@ -10,6 +10,8 @@ import Foundation
 import Firebase
 
 class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
     var image: UIImage = UIImage()
     var category = "";
     var categories = ["Laptop","Car","Textbook"]
@@ -34,14 +36,14 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var picker: UIPickerView!
     
     @IBAction func createListing(_ sender: Any) {
-            uploadImage()
+//            uploadImage()
                 let db = Firestore.firestore()
                 var ref: DocumentReference? = nil
                 ref = db.collection("listings").addDocument(data: [
                     "userId": "xxxxxx",
                     "type": category,
-                    "title": name.text,
-                    "description": desc.text,
+                    "title": name.text!,
+                    "description": desc.text!,
                     "url": "www.fake.com"
 
                 ]) { err in
@@ -51,17 +53,18 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
                         print("Document added with ID: \(ref!.documentID)")
                     }
                 }
+        uploadImage(name: ref!.documentID)
     }
     
-    func uploadImage(){
+    func uploadImage(name: String){
         let storage = Storage.storage()
         let storageRef = storage.reference()
         var data = Data()
         data = UIImageJPEGRepresentation(image, 0.8)!
-        // set upload path
+        
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpg"
-        storageRef.child("/images/").putData(data, metadata: metaData){(metaData,error) in
+        storageRef.child("/\(name)/").putData(data, metadata: metaData){(metaData,error) in
             if let error = error {
                 print(error.localizedDescription)
                 return
@@ -77,6 +80,11 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         super.viewDidLoad()
         picker.delegate = self
         picker.dataSource = self
+        ImagePickerManager().pickImage(self){ image in
+            self.image = image
+        }
+        
+        
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent  component: Int) {
         category = categories[row]

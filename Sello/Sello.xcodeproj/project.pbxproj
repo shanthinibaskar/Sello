@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0304B453219E455D003F956A /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0304B452219E455D003F956A /* ImagePickerManager.swift */; };
 		030C26AE21A61044002D3B75 /* ListingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C26AD21A61044002D3B75 /* ListingsView.swift */; };
+		030C26B021A8B19E002D3B75 /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C26AF21A8B19E002D3B75 /* CustomCollectionCell.swift */; };
 		03ACF11F2193C941000D5783 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03ACF11E2193C941000D5783 /* GoogleService-Info.plist */; };
 		03C7B10B219E247F008442E3 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7B10A219E247F008442E3 /* Listing.swift */; };
 		03FC8766219E4A6F0000DCC8 /* CreateListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC8765219E4A6F0000DCC8 /* CreateListingView.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		0304B452219E455D003F956A /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		030C26AD21A61044002D3B75 /* ListingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsView.swift; sourceTree = "<group>"; };
+		030C26AF21A8B19E002D3B75 /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
 		03ACF11E2193C941000D5783 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		03C7B10A219E247F008442E3 /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
 		03FC8765219E4A6F0000DCC8 /* CreateListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingView.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				0304B452219E455D003F956A /* ImagePickerManager.swift */,
 				03FC8765219E4A6F0000DCC8 /* CreateListingView.swift */,
 				030C26AD21A61044002D3B75 /* ListingsView.swift */,
+				030C26AF21A8B19E002D3B75 /* CustomCollectionCell.swift */,
 			);
 			path = Sello;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				E4AF36482193B5B30059AE6B /* AppDelegate.swift in Sources */,
 				03FC8766219E4A6F0000DCC8 /* CreateListingView.swift in Sources */,
 				0304B453219E455D003F956A /* ImagePickerManager.swift in Sources */,
+				030C26B021A8B19E002D3B75 /* CustomCollectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
