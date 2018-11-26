@@ -30,6 +30,18 @@ class LogInViewController: UIViewController {
             for: .primaryActionTriggered
         )
         
+        password.addTarget(
+            self,
+            action: #selector(textFieldDidReturn),
+            for: .primaryActionTriggered
+        )
+        
+        email.addTarget(
+            self,
+            action: #selector(textFieldDidReturn),
+            for: .primaryActionTriggered
+        )
+        
         registerForKeyboardNotifications()
     }
     
@@ -42,11 +54,11 @@ class LogInViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func actionButtonPressed() {
-        signIn()
+        signUp()
     }
     
     @objc private func textFieldDidReturn() {
-        signIn()
+        signUp()
     }
     
     // MARK: - Helpers
@@ -63,7 +75,7 @@ class LogInViewController: UIViewController {
         )
     }
     
-    private func signIn() {
+    private func signUp() {
         guard let name = username.text, !name.isEmpty else {
             showMissingNameAlert()
             return
@@ -71,7 +83,7 @@ class LogInViewController: UIViewController {
         
         username.resignFirstResponder()
         
-        AppSettings.displayName = name
+        AppSettings.username = name
         Auth.auth().signInAnonymously(completion: nil)
     }
     
@@ -88,25 +100,25 @@ class LogInViewController: UIViewController {
     // MARK: - Notifications
     
     @objc private func keyboardWillShow(_ notification: Notification) {
-        guard let userInfo = notification.userInfo else {
+        if (notification.userInfo?.!isEmpty) {
+            let userInfo = notification.userInfo
+            if (UIKeyboardFrameEndUserInfoKey.!isEmpty) {
+                keyboardHeight = (userInfo[UIkeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height }
+            if (UIKeyboardAnimationDurationUserInfoKey.!isEmpty) {
+                let keyboardAnimationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue
+                UIView.animate(withDuration: keyboardAnimationDuration, delay: 0, options: options, animations: {
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
+            }
+            if (UIKeyboardAnimationCurveUserInfoKey.!isEmpty) {
+               let keyboardAnimationCurve = (userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)?.uintValue
+                let options = UIView.AnimationOptions(rawValue: keyboardAnimationCurve << 16)
+                bottomConstraint.constant = keyboardHeight + 20
+            }
+        }
+        else {
             return
         }
-        guard let keyboardHeight = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height else {
-            return
-        }
-        guard let keyboardAnimationDuration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue else {
-            return
-        }
-        guard let keyboardAnimationCurve = (userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)?.uintValue else {
-            return
-        }
-        
-        let options = UIView.AnimationOptions(rawValue: keyboardAnimationCurve << 16)
-        bottomConstraint.constant = keyboardHeight + 20
-        
-        UIView.animate(withDuration: keyboardAnimationDuration, delay: 0, options: options, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
     }
     
     @objc private func keyboardWillHide(_ notification: Notification) {
