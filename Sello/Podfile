@@ -6,6 +6,23 @@ target 'Sello' do
   use_frameworks!
   pod 'Firebase/Core'
   platform :ios, '11.4'
+  # Pods for YourProject
+  pod 'Firebase'
+  pod 'Firebase/InAppMessagingDisplay'
+  pod 'MessageKit'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Firestore'
+  post_install do |installer|
+      installer.pods_project.targets.each do |target|
+          if target.name == 'MessageKit'
+              target.build_configurations.each do |config|
+                  config.build_settings['SWIFT_VERSION'] = '4.0'
+              end
+          end
+      end
+  end
   # Pods for Sello
 
   target 'SelloTests' do
@@ -19,3 +36,6 @@ target 'Sello' do
   end
 
 end
+
+    
+
