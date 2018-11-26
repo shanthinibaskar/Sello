@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    @IBOutlet weak var verify: UILabel!
     
     @IBOutlet weak var login: UIButton!
 
@@ -22,7 +23,10 @@ class LoginViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error == nil {
                 if (user != nil && user.isEmailVerified){
-                    self.performSegue(withIdentifier: "Login", sender: self)
+                    self.performSegue(withIdentifier: "LoginSuccess", sender: self)
+                }
+                if !user.isEmailVerified {
+                    verify.alpha = 1
                 }
             }
         }
@@ -37,7 +41,7 @@ class LoginViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        verify.alpha = 0
         // Do any additional setup after loading the view.
     }
 

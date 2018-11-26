@@ -16,6 +16,7 @@
 		84EC510921AA5BE600EE814F /* SuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EC510821AA5BE600EE814F /* SuccessViewController.swift */; };
 		9D15940A2E051D3F47A0732A /* Pods_SelloTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBF1D8BA4699A516F71F5A0 /* Pods_SelloTests.framework */; };
 		B4FFFAD987E780744D74B323 /* Pods_Sello.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFA24D8F8EE8305BBEF5AF31 /* Pods_Sello.framework */; };
+		E10F304221AB96BE006BEE9C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E10F304121AB96BE006BEE9C /* ProfileViewController.swift */; };
 		E4AF36482193B5B30059AE6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF36472193B5B30059AE6B /* AppDelegate.swift */; };
 		E4AF364A2193B5B30059AE6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AF36492193B5B30059AE6B /* ViewController.swift */; };
 		E4AF364D2193B5B30059AE6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4AF364B2193B5B30059AE6B /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		9EBF1D8BA4699A516F71F5A0 /* Pods_SelloTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SelloTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2255DAAAF15C91A7E65461B /* Pods_SelloUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SelloUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA24D8F8EE8305BBEF5AF31 /* Pods_Sello.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sello.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E10F304121AB96BE006BEE9C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E4AF36442193B5B30059AE6B /* Sello.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sello.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4AF36472193B5B30059AE6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4AF36492193B5B30059AE6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				8429FC6B21AA0DA700A33981 /* SignupViewController.swift */,
 				8429FC6D21AA0E3700A33981 /* ForgotPassViewController.swift */,
 				84EC510821AA5BE600EE814F /* SuccessViewController.swift */,
+				E10F304121AB96BE006BEE9C /* ProfileViewController.swift */,
 			);
 			path = Sello;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				8429FC6E21AA0E3700A33981 /* ForgotPassViewController.swift in Sources */,
 				8429FC6C21AA0DA700A33981 /* SignupViewController.swift in Sources */,
 				03C7B10B219E247F008442E3 /* Listing.swift in Sources */,
+				E10F304221AB96BE006BEE9C /* ProfileViewController.swift in Sources */,
 				E4AF36482193B5B30059AE6B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
