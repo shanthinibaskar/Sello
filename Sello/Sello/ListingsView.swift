@@ -18,7 +18,25 @@ import UIKit
 import Foundation
 import Firebase
 
+
+
 class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    @IBAction func moreTapped() {
+        print("TAPPED")
+        NotificationCenter.default.post(name: NSNotification.Name("showSideMenu"), object: nil)
+    }
+    @IBOutlet weak var sideMenuConstraint: NSLayoutConstraint!
+    var sideMenuOpen = false
+    @objc func showSideMenu() {
+        if sideMenuOpen {
+            sideMenuOpen = false
+            sideMenuConstraint.constant = -240
+        } else {
+            sideMenuOpen = true
+            sideMenuConstraint.constant = 0
+        }
+    }
+    
     
     var listings: [Listing] = []
     var cachedImages: [UIImage] = []
@@ -108,6 +126,19 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(showProfile), name: NSNotification.Name("showProfile"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showFavorites), name: NSNotification.Name("showFavorites"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showMessaging), name: NSNotification.Name("showMessaging"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showSideMenu), name: NSNotification.Name("showSideMenu"), object: nil)
+    }
+    @objc func showProfile() {
+        performSegue(withIdentifier: "showProfile", sender: nil)
+    }
+    @objc func showFavorites() {
+        performSegue(withIdentifier: "showFavorites", sender: nil)
+    }
+    @objc func showMessaging() {
+        performSegue(withIdentifier: "showMessaging", sender: nil)
     }
     
 }
