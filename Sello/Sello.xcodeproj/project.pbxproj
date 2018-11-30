@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		03C7B10B219E247F008442E3 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7B10A219E247F008442E3 /* Listing.swift */; };
 		45A686A836B60AE3E9EDF7BB /* Pods_SelloUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2255DAAAF15C91A7E65461B /* Pods_SelloUITests.framework */; };
-		8405EA5421A7419600950C8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8405EA5321A7419600950C8B /* GoogleService-Info.plist */; };
+		68BFA08221B0A73700000922 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 68BFA08121B0A73700000922 /* GoogleService-Info.plist */; };
 		8405EA5621A9C81600950C8B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8405EA5521A9C81600950C8B /* LoginViewController.swift */; };
 		8429FC6C21AA0DA700A33981 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429FC6B21AA0DA700A33981 /* SignupViewController.swift */; };
 		8429FC6E21AA0E3700A33981 /* ForgotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8429FC6D21AA0E3700A33981 /* ForgotPassViewController.swift */; };
@@ -50,8 +50,8 @@
 		3BB94DAC7E039D0BA07186CE /* Pods-Sello.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sello.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sello/Pods-Sello.debug.xcconfig"; sourceTree = "<group>"; };
 		3F20B0FE418A7611CEB9F1EA /* Pods-SelloUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelloUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SelloUITests/Pods-SelloUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5BF38ED60C19B887ABBA969E /* Pods-SelloUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelloUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SelloUITests/Pods-SelloUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		68BFA08121B0A73700000922 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		69BC6211C84D6E8F419B011A /* Pods-Sello.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sello.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sello/Pods-Sello.release.xcconfig"; sourceTree = "<group>"; };
-		8405EA5321A7419600950C8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8405EA5521A9C81600950C8B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		8429FC6B21AA0DA700A33981 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		8429FC6D21AA0E3700A33981 /* ForgotPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 				E4AF364B2193B5B30059AE6B /* Main.storyboard */,
 				E4AF364E2193B5B50059AE6B /* Assets.xcassets */,
 				E4AF36502193B5B50059AE6B /* LaunchScreen.storyboard */,
-				8405EA5321A7419600950C8B /* GoogleService-Info.plist */,
+				68BFA08121B0A73700000922 /* GoogleService-Info.plist */,
 				E4AF36532193B5B50059AE6B /* Info.plist */,
 				03C7B10A219E247F008442E3 /* Listing.swift */,
 				8405EA5521A9C81600950C8B /* LoginViewController.swift */,
@@ -296,7 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4AF36522193B5B50059AE6B /* LaunchScreen.storyboard in Resources */,
-				8405EA5421A7419600950C8B /* GoogleService-Info.plist in Resources */,
+				68BFA08221B0A73700000922 /* GoogleService-Info.plist in Resources */,
 				E4AF364F2193B5B50059AE6B /* Assets.xcassets in Resources */,
 				E4AF364D2193B5B30059AE6B /* Main.storyboard in Resources */,
 			);

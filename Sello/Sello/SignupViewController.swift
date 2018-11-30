@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SignupViewController: UIViewController {
     enum error {
@@ -14,15 +15,17 @@ class SignupViewController: UIViewController {
         case invalidChar
         case notUniv
     }
-    @IBOutlet weak var description: UILabel!
+
     @IBOutlet weak var confirmPass: UITextField!
     @IBOutlet weak var newPass: UITextField!
     @IBOutlet weak var newUser: UITextField!
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        description.alpha = 0
         newPass.alpha = 0
         confirmPass.alpha = 0
         // Do any additional setup after loading the view.
@@ -38,12 +41,13 @@ class SignupViewController: UIViewController {
         let pass = newPass.text
         let confirm = confirmPass.text
         if(pass != confirm){
-            description.text = "Passwords do not match"
-            description.alpha = 1
             return
         }
-        if(checkUser(username) == error.success){
-            Auth.auth().createUser(withEmail: username, password: pass) { (authResult, error) in
+        if(username == "" || pass == ""){
+            return
+        }
+        if(checkUser(username: username!) == error.success){
+            Auth.auth().createUser(withEmail: username!, password: pass!) { (authResult, error) in
                 // ...
                 guard let user = authResult?.user else { return }
                 self.performSegue(withIdentifier: "SignIn", sender: self)

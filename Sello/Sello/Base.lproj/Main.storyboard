@@ -69,7 +69,11 @@
                         <viewLayoutGuide key="safeArea" id="HII-aw-OIp"/>
                     </view>
                     <navigationItem key="navigationItem" id="S91-xW-nNU">
-                        <barButtonItem key="rightBarButtonItem" title="Edit Profile" id="u7n-qh-5Yb"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit Profile" id="u7n-qh-5Yb">
+                            <connections>
+                                <segue destination="DEh-Zd-BKg" kind="showDetail" id="tiW-zJ-L1q"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="name" destination="4Ua-ND-Zdy" id="Vc6-h5-6gC"/>
@@ -80,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rzg-bl-Opu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2399.1999999999998" y="-101.19940029985008"/>
+            <point key="canvasLocation" x="-476" y="-478"/>
         </scene>
         <!--Forgot Pass View Controller-->
         <scene sceneID="1Yf-su-Rtq">
@@ -131,16 +135,6 @@
                                 <state key="normal" title="Log in"/>
                                 <connections>
                                     <action selector="loginPress:" destination="DEh-Zd-BKg" eventType="touchUpInside" id="WxO-lG-t2i"/>
-                                    <segue destination="Zr3-lH-ceM" kind="showDetail" id="okd-bu-mMt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u6O-DT-xwI">
-                                <rect key="frame" x="127" y="453" width="121" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sign up"/>
-                                <connections>
-                                    <action selector="signUp:" destination="DEh-Zd-BKg" eventType="touchUpInside" id="p5W-Pq-pRH"/>
-                                    <segue destination="PD0-a5-rN4" kind="showDetail" id="5kt-tX-omd"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hRm-p9-d7V">
@@ -163,7 +157,6 @@
                                 <state key="normal" title="Forgot Password?"/>
                                 <connections>
                                     <action selector="forgotPass:" destination="DEh-Zd-BKg" eventType="touchUpInside" id="Wip-0G-kl7"/>
-                                    <segue destination="Htc-6f-LNy" kind="showDetail" id="2PE-bg-s72"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email not Verified" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKa-lg-KGO">
@@ -173,6 +166,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xm0-NQ-IcX">
+                                <rect key="frame" x="158" y="455" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signs:" destination="DEh-Zd-BKg" eventType="touchUpInside" id="SSH-tq-nIe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="y85-Ff-nbv"/>
@@ -182,6 +183,7 @@
                         <outlet property="password" destination="lsf-ep-JPm" id="G7i-ZL-Ads"/>
                         <outlet property="username" destination="hRm-p9-d7V" id="YmR-hq-g5p"/>
                         <outlet property="verify" destination="CKa-lg-KGO" id="my6-uk-27Z"/>
+                        <segue destination="Zr3-lH-ceM" kind="showDetail" identifier="LoginSuccess" id="DxC-4p-AxK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sN3-sR-K6F" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -369,6 +371,7 @@
                                 <state key="normal" title="Sign up"/>
                                 <connections>
                                     <action selector="createAccount:" destination="PD0-a5-rN4" eventType="touchUpInside" id="q9t-Ie-GKV"/>
+                                    <action selector="signUpPress:" destination="PD0-a5-rN4" eventType="touchUpInside" id="mqQ-xf-IG3"/>
                                     <segue destination="iQP-9o-zB6" kind="showDetail" id="raF-H0-BSM"/>
                                 </connections>
                             </button>
@@ -379,27 +382,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email Verification Sent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxb-CV-Y49">
-                                <rect key="frame" x="66" y="440" width="257" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="fQ6-ph-Yn6"/>
                     </view>
                     <connections>
                         <outlet property="confirmPass" destination="Fvh-Tu-G90" id="XPJ-RD-5Su"/>
-                        <outlet property="description" destination="Lxb-CV-Y49" id="tp6-Jj-VIB"/>
+                        <outlet property="confirmPss" destination="Fvh-Tu-G90" id="rHj-zf-bzv"/>
+                        <outlet property="email" destination="U9B-yq-Htp" id="fUH-eZ-q4p"/>
                         <outlet property="newPass" destination="ofS-Na-uIY" id="FRY-Ho-9P2"/>
                         <outlet property="newUser" destination="U9B-yq-Htp" id="qmZ-j2-JmQ"/>
+                        <outlet property="pass" destination="ofS-Na-uIY" id="MBq-Tl-vsC"/>
+                        <outlet property="signUp" destination="7PC-t7-dAW" id="oH2-64-E1B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2T-3H-wdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-420" y="1044"/>
+            <point key="canvasLocation" x="-289" y="985"/>
         </scene>
         <!--Success View Controller-->
         <scene sceneID="xqR-sh-kqj">
@@ -499,4 +498,7 @@
             <point key="canvasLocation" x="1460" y="-101.19940029985008"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tiW-zJ-L1q"/>
+    </inferredMetricsTieBreakers>
 </document>
