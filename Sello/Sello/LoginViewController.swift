@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
         case notUniv
     }
     var Login:Bool = false;
+    let db = Firestore.firestore()
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
@@ -36,7 +37,7 @@ class LoginViewController: UIViewController {
 
         Auth.auth().signIn(withEmail: userEmail, password: password) { (users, error) in
             if error == nil {
-                if users != nil{
+                if users != nil && users!.user.isEmailVerified{
                     print("Signed In")
                     self.performSegue(withIdentifier: "LoginSuccess", sender: self)
                 }
@@ -151,6 +152,8 @@ class LoginViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "LoginSuccess"){
             let bar = segue.destination as? UITabBarController
+            let usersDB = db.collection("UserInfo")
+            userDB.
         }
         else if(segue.identifier == "forgotPass"){
             let destination = segue.destination as? ForgotPassViewController
