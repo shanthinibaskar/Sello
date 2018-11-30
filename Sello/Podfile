@@ -6,6 +6,8 @@ target 'Sello' do
   use_frameworks!
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
+
 
   platform :ios, '11.4'
   # Pods for Sello
