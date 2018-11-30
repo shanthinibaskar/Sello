@@ -18,7 +18,6 @@ class ViewController: UIViewController{
     override func viewDidLoad() {
         
         let storage = Storage.storage()
-        let storageRef = storage.reference()
         
         super.viewDidLoad()
         let db = Firestore.firestore()

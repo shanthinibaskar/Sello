@@ -13,8 +13,8 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     
     
     var image: UIImage = UIImage()
-    var category = "";
-    var categories = ["Laptop","Car","Textbook"]
+    var category = "Textbooks";
+    var categories = ["Textbooks","Transportation","Clothes","Furniture","Technology","Other"]
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

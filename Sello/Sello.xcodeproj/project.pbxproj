@@ -12,6 +12,7 @@
 		030C26B021A8B19E002D3B75 /* CustomCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030C26AF21A8B19E002D3B75 /* CustomCollectionCell.swift */; };
 		03ACF11F2193C941000D5783 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 03ACF11E2193C941000D5783 /* GoogleService-Info.plist */; };
 		03C7B10B219E247F008442E3 /* Listing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C7B10A219E247F008442E3 /* Listing.swift */; };
+		03F767E721B0C1E400351FC4 /* ListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F767E621B0C1E400351FC4 /* ListingView.swift */; };
 		03FC8766219E4A6F0000DCC8 /* CreateListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC8765219E4A6F0000DCC8 /* CreateListingView.swift */; };
 		45A686A836B60AE3E9EDF7BB /* Pods_SelloUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2255DAAAF15C91A7E65461B /* Pods_SelloUITests.framework */; };
 		9D15940A2E051D3F47A0732A /* Pods_SelloTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBF1D8BA4699A516F71F5A0 /* Pods_SelloTests.framework */; };
@@ -48,6 +49,7 @@
 		030C26AF21A8B19E002D3B75 /* CustomCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionCell.swift; sourceTree = "<group>"; };
 		03ACF11E2193C941000D5783 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		03C7B10A219E247F008442E3 /* Listing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listing.swift; sourceTree = "<group>"; };
+		03F767E621B0C1E400351FC4 /* ListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingView.swift; sourceTree = "<group>"; };
 		03FC8765219E4A6F0000DCC8 /* CreateListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListingView.swift; sourceTree = "<group>"; };
 		1DEA346034C1CE93B2C93BD7 /* Pods-SelloTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelloTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SelloTests/Pods-SelloTests.release.xcconfig"; sourceTree = "<group>"; };
 		29510E015F0CF42AD16B023B /* Pods-SelloTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelloTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SelloTests/Pods-SelloTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				03FC8765219E4A6F0000DCC8 /* CreateListingView.swift */,
 				030C26AD21A61044002D3B75 /* ListingsView.swift */,
 				030C26AF21A8B19E002D3B75 /* CustomCollectionCell.swift */,
+				03F767E621B0C1E400351FC4 /* ListingView.swift */,
 			);
 			path = Sello;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4AF364A2193B5B30059AE6B /* ViewController.swift in Sources */,
+				03F767E721B0C1E400351FC4 /* ListingView.swift in Sources */,
 				030C26AE21A61044002D3B75 /* ListingsView.swift in Sources */,
 				03C7B10B219E247F008442E3 /* Listing.swift in Sources */,
 				E4AF36482193B5B30059AE6B /* AppDelegate.swift in Sources */,
