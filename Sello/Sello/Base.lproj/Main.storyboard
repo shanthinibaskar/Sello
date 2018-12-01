@@ -322,7 +322,7 @@
         <!--Create Listings View-->
         <scene sceneID="5rc-8c-jMO">
             <objects>
-                <viewController id="CE4-zU-9wg" customClass="CreateListingsView" customModule="Sello" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Create" id="CE4-zU-9wg" customClass="CreateListingsView" customModule="Sello" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HyQ-KZ-y7F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -362,14 +362,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iC7-pG-PKV">
-                                <rect key="frame" x="142" y="540" width="91" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Create listing"/>
-                                <connections>
-                                    <action selector="createListing:" destination="CE4-zU-9wg" eventType="touchUpInside" id="tm2-HK-tID"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOC-xp-bg2">
                                 <rect key="frame" x="137" y="464" width="100" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -382,6 +374,14 @@
                                 <rect key="frame" x="0.0" y="294" width="375" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iC7-pG-PKV">
+                                <rect key="frame" x="95" y="536" width="185" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create listing"/>
+                                <connections>
+                                    <action selector="createListing:" destination="CE4-zU-9wg" eventType="touchUpInside" id="tm2-HK-tID"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <accessibility key="accessibilityConfiguration" identifier="create"/>
@@ -391,6 +391,7 @@
                         <outlet property="desc" destination="VYZ-TT-TEu" id="PcN-rz-MY0"/>
                         <outlet property="name" destination="pG4-kF-MKN" id="6YI-lN-TH2"/>
                         <outlet property="picker" destination="7F9-sM-bCP" id="gOW-91-it3"/>
+                        <outlet property="submit" destination="iC7-pG-PKV" id="t92-Xq-Cvw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hpe-Vq-TTW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -400,35 +401,61 @@
         <!--Listing View-->
         <scene sceneID="0Xj-lq-pRU">
             <objects>
-                <viewController id="zQB-sj-PAu" customClass="ListingView" customModule="Sello" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ListingView" id="zQB-sj-PAu" customClass="ListingView" customModule="Sello" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fwd-2F-u1Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sli-2M-Qxz">
-                                <rect key="frame" x="135" y="441" width="105" height="73"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="51"/>
-                                <state key="normal" title="Chat"/>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kf1-FC-qrz">
-                                <rect key="frame" x="67" y="20" width="240" height="302"/>
+                                <rect key="frame" x="67" y="64" width="240" height="302"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v0u-wo-fna">
-                                <rect key="frame" x="144" y="322" width="86" height="56"/>
+                                <rect key="frame" x="67" y="366" width="240" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dfq-kh-9vG">
+                                <rect key="frame" x="58" y="386" width="258" height="154"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZY0-BB-edx">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="mnO-Uf-YxQ"/>
+                                </items>
+                            </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dns-1f-WG1">
+                                <rect key="frame" x="120" y="548" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteListing:" destination="zQB-sj-PAu" eventType="touchUpInside" id="BVM-s7-SFl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TC7-vX-No6">
+                                <rect key="frame" x="225" y="548" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="editListing:" destination="zQB-sj-PAu" eventType="touchUpInside" id="WnF-aR-24Y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vqd-hA-hcw"/>
                     </view>
+                    <navigationItem key="navigationItem" id="LHd-zi-tRg"/>
                     <connections>
-                        <outlet property="image" destination="Kf1-FC-qrz" id="u1l-KJ-hn7"/>
-                        <outlet property="title" destination="v0u-wo-fna" id="Gtz-eI-fWa"/>
+                        <outlet property="detailsView" destination="Dfq-kh-9vG" id="VlA-Yp-qx7"/>
+                        <outlet property="imageView" destination="Kf1-FC-qrz" id="NPu-AH-VzA"/>
+                        <outlet property="name" destination="v0u-wo-fna" id="eNB-Nw-fPB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WfM-vC-jA5" userLabel="First Responder" sceneMemberID="firstResponder"/>

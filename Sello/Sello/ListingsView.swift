@@ -24,16 +24,15 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var categories: UIView!
-    var hidden = true
     var listings: [Listing] = []
     var imageDict: [String: UIImage] = [:]
 
-    var cachedImages: [UIImage] = []
     
     @IBOutlet weak var collectionView: UICollectionView!
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listings.count
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if(searchBar.text! == ""){
             getAllListings()
@@ -42,32 +41,25 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let detailedVC = ListingView()
-//        detailedVC.image.image = UIColor.red.image()!
-//        detailedVC.image.image = imageDict[listings[indexPath.row].url]
-//        detailedVC.name.text = listings[indexPath.row].title
-//        navigationController?.pushViewController(detailedVC, animated: true)
-        let vc = ListingView(
-            nibName: "ListingView",
-            bundle: nil)
-        vc.image.image = UIColor.red.image()
-        vc.name.text = "123"
-        navigationController?.pushViewController(vc,
-                                                 animated: true )
+        let myVC = storyboard?.instantiateViewController(withIdentifier: "ListingView") as! ListingView
+        myVC.image = imageDict[listings[indexPath.row].url]
+        myVC.listing = listings[indexPath.row]
+
+        
+        navigationController?.pushViewController(myVC, animated: true)
 
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "custom", for: indexPath) as! CustomCollectionCell
         cell.label.text = listings[indexPath.row].title
-        if(indexPath.row < cachedImages.count){
-//            cell.image.image = cachedImages[indexPath.row]
+        if(indexPath.row < imageDict.count){
             cell.image.image = imageDict[listings[indexPath.row].url]
             cell.image.layer.cornerRadius = 30.0
             cell.image.layer.borderWidth = 3.0
             cell.image.layer.borderColor = UIColor.white.cgColor
             cell.image.layer.masksToBounds = true
         }else{
-            cell.image.image = UIColor.red.image()
+            cell.image.image = UIColor.white.image()
         }
 
         return cell
@@ -83,7 +75,6 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
                 } else {
                     let tempImage = UIImage(data: data!)
                     self.imageDict[listing.url] = tempImage!
-                    self.cachedImages.append(tempImage!)
                     self.collectionView.reloadData()
                 }
             }
@@ -96,7 +87,6 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     func getAllListings(){
         
-        cachedImages = []
         listings = []
         let db = Firestore.firestore()
         let decoder = JSONDecoder()
@@ -125,23 +115,26 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     func searchListings(search: String){
         if(search != ""){
-        self.cachedImages = []
         var tempListings: [Listing] = []
+            var fullListings: [Listing] = []
+
         for list in listings{
             if((list.title.lowercased().range(of: search.lowercased())) != nil){
                 tempListings.append(list)
             }
         }
+            fullListings = listings
         listings = tempListings
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
-        self.cacheImages()
+            self.collectionView.reloadData()
+//            listings = fullListings
+
         }
         
     }
     
     func getListings(catergory: String){
-        cachedImages = []
         listings = []
         let db = Firestore.firestore()
         let decoder = JSONDecoder()
@@ -161,7 +154,9 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
                     }
                     self.collectionView.delegate = self
                     self.collectionView.dataSource = self
-                    self.cacheImages()
+                    self.collectionView.reloadData()
+
+//                    self.cacheImages()
                 }
         }
     }
@@ -179,7 +174,6 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
         getListings(catergory: "Clothes")
     }
     
-    
     @IBAction func furniture(_ sender: Any) {
         self.categories.isHidden = true;
         getListings(catergory: "Furniture")
@@ -188,7 +182,6 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
     @IBAction func technology(_ sender: Any) {
         self.categories.isHidden = true;
         getListings(catergory: "Technology")
-
     }
 
     @IBAction func other(_ sender: Any) {
@@ -200,12 +193,10 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
         
     }
     @IBAction func categories(_ sender: Any) {
-        if(hidden){
+        if(self.categories.isHidden){
             self.categories.isHidden = false;
-            hidden = false;
         }else{
             self.categories.isHidden = true;
-            hidden = true;
         }
 
     }
