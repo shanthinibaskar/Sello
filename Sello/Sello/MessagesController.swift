@@ -40,7 +40,7 @@ class MessagesController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("made it here")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(handleLogout))
         
         let image = UIImage(named: "new_message_icon")
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleNewMessage))
@@ -250,7 +250,10 @@ class MessagesController: UITableViewController {
         } catch let logoutError {
             print(logoutError)
         }*/
-//        self.dismiss(animated: true, completion: nil)
+        
+        print("HandleLogout")
+       self.dismiss(animated: true, completion: nil)
+        
 //        let loginController = LoginController()
 //        loginController.messagesController = self
 //        present(loginController, animated: true, completion: nil)
