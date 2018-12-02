@@ -38,9 +38,9 @@ class UserCell: UITableViewCell {
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     self.textLabel?.text = dictionary["name"] as? String
                     
-//                    if let profileImageUrl = dictionary["profileImageUrl"] as? String {
-//                        self.profileImageView.loadImageUsingCacheWithUrlString(profileImageUrl)
-//                    }
+                    //                    if let profileImageUrl = dictionary["profileImageUrl"] as? String {
+                    //                        self.profileImageView.loadImageUsingCacheWithUrlString(profileImageUrl)
+                    //                    }
                 }
                 
             }, withCancel: nil)

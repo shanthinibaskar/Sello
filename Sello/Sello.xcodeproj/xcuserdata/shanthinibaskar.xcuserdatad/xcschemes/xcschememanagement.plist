@@ -7,7 +7,25 @@
 		<key>Sello.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>E4AF36432193B5B30059AE6B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E4AF36572193B5B50059AE6B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E4AF36622193B5B60059AE6B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
