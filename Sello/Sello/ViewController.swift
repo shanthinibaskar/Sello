@@ -12,12 +12,16 @@ import Firebase
 class ViewController: UIViewController{
     var listings: [Listing] = []
     
-    
+    var window: UIWindow?
+
     
     
     override func viewDidLoad() {
-        
-        let storage = Storage.storage()
+//        window = UIWindow(frame:UIScreen.main.bounds)
+//        window?.makeKeyAndVisible()
+//        window?.rootViewController = UINavigationController(rootViewController: MessagesController())
+        let loginController = UINavigationController(rootViewController: MessagesController())
+        present(loginController, animated: true, completion: nil)
         
         super.viewDidLoad()
         let db = Firestore.firestore()

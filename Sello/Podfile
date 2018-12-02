@@ -7,7 +7,8 @@ target 'Sello' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
-
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
   platform :ios, '11.4'
   # Pods for Sello
