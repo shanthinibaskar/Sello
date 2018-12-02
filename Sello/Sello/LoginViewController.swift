@@ -18,8 +18,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var switchButton: UISegmentedControl!
-    
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var schoolTextField: UITextField!
     
     var isLogin:Bool = true
     
@@ -30,10 +30,14 @@ class LoginViewController: UIViewController {
                 print("log")
                 login.setTitle("Log In", for: UIControl.State())
                 isLogin = true
+            nameTextField.isHidden = true
+            schoolTextField.isHidden = true
             case 1:
                 print("Signup")
                 login.setTitle("Sign Up", for: UIControl.State())
                 isLogin = false
+                nameTextField.isHidden = false
+                schoolTextField.isHidden = false
             default:
                 break
         }
@@ -51,45 +55,64 @@ class LoginViewController: UIViewController {
             registerUser()
         }
     }
+    func alert(name: String, message: String){
+        let alert = UIAlertController(title: name, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     func loginUser(){
         guard let userEmail = email.text, let userPass = password.text else {
             print("Form is not valid")
             return
         }
+        if userEmail == "" || userPass == ""{
+            alert(name: "Error", message: "Enter email/password")
+            return
+        }
+        
         
         Auth.auth().signIn(withEmail: userEmail, password: userPass, completion: { (user, error) in
+            print(user)
+            print(error)
             if error == nil{
                 if user != nil && user!.user.isEmailVerified{
                     print("Signed In")
                     self.performSegue(withIdentifier: "LogIn", sender: self)
                 }
                 else if !user!.user.isEmailVerified{
-                    let alert = UIAlertController(title: "Email not verfified", message: "This is an alert.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-                        NSLog("The \"OK\" alert occured.")
-                    }))
-                    self.present(alert, animated: true, completion: nil)
+                    self.alert(name: "Error", message: "Email is not verified")
                 }
                 else {
-                    let alert = UIAlertController(title: "Password not correct", message: "This is an alert.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-                        NSLog("The \"OK\" alert occured.")
-                    }))
-                    self.present(alert, animated: true, completion: nil)
+                    
                 }
             }
+            else{
+                self.alert(name: "Error", message: "Incorrect Password")
+            }
+            
         })
     }
     func registerUser(){
-        guard let userEmail = email.text, let userPass = password.text, let name = nameTextField.text else {
+        guard let userEmail = email.text, let userPass = password.text, let name = nameTextField.text, let schoolName = schoolTextField.text else {
             print("Form is not valid")
+            return
+        }
+        if userEmail == "" || userPass == "" || name == "" || schoolName == ""{
+            alert(name: "Error", message: "Missing values")
+            return
+        }
+        if userPass.count < 6{
+            alert(name: "Error", message: "Password must be greater than 6 characters")
             return
         }
         if checkUser(username: userEmail) == error.success{
             Auth.auth().createUser(withEmail: userEmail, password: userPass, completion: { (res, error) in
                 
                 if let error = error {
-                    print(error)
+                    print("ERROR")
+                    self.alert(name: "Error", message: error.localizedDescription)
                     return
                 }
                 if let user = res?.user {
@@ -101,7 +124,7 @@ class LoginViewController: UIViewController {
                             
                             let ref = Database.database().reference()
                             let usersReference = ref.child("users").child(uid)
-                            let values = ["name": name, "email": userEmail]
+                            let values = ["name": name, "email": userEmail, "school": schoolName]
                             usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
                                 
                                 if let err = err {
@@ -112,6 +135,7 @@ class LoginViewController: UIViewController {
                                 self.dismiss(animated: true, completion: nil)
                             })
                             print("Email Sent")
+                            self.alert(name: "Email is Sent", message: "Verify Email to Log in")
                         }
                         
                     }
@@ -124,21 +148,22 @@ class LoginViewController: UIViewController {
             })
         }
         else{
-            let alert = UIAlertController(title: "My Alert", message: "This is an alert.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-                NSLog("The \"OK\" alert occured.")
-            }))
-            self.present(alert, animated: true, completion: nil)
+            alert(name: "Error", message: "Email Address is not Valid")
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if switchButton.selectedSegmentIndex == 0{
             isLogin = true
+            nameTextField.isHidden = true
+            schoolTextField.isHidden = true
         }
-        else{isLogin = false}
+        else{
+            isLogin = false
+            nameTextField.isHidden = true
+            schoolTextField.isHidden = true
+        }
         // Do any additional setup after loading the view.
     }
     func isValid(char: Character) -> Bool{
@@ -216,14 +241,13 @@ class LoginViewController: UIViewController {
             
         })
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "LogIn"{
+            let destination = segue.destination as! UITabBarController
+            
+        }
     }
-    */
-
 }

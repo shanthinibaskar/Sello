@@ -14,7 +14,7 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     var listing: Listing!
     var editedImage: UIImage!
     var editingListing = false
-    var image: UIImage = UIImage()
+    var image: UIImage!
     var category = "Textbooks";
     var categories = ["Textbooks","Transportation","Clothes","Furniture","Technology","Other"]
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -38,7 +38,20 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     
     @IBOutlet weak var picker: UIPickerView!
     
+    func alert(name: String, message: String){
+        let alert = UIAlertController(title: name, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+            NSLog("The \"OK\" alert occured.")
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func createListing(_ sender: Any) {
+        if let isImage = image{
+            
+        }else{
+           self.alert(name: "ERROR", message: "Upload an image for your listing before you try to submit!")
+return        }
                 let db = Firestore.firestore()
                 var ref: DocumentReference? = nil
         if(!editingListing){
@@ -76,7 +89,7 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
             
         }
         
-        navigationController?.popViewController(animated: true)
+        
     }
     
     func uploadImage(name: String){
@@ -100,6 +113,8 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
                             print(error.localizedDescription)
                             return
                         }
+                        self.navigationController?.popViewController(animated: true)
+
                     }
                 }
             }
@@ -112,6 +127,8 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
                 print(error.localizedDescription)
                 return
             }
+            self.navigationController?.popViewController(animated: true)
+
             }
         }
     }

@@ -84,6 +84,8 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
     override func viewDidAppear(_ animated: Bool) {
         self.categories.isHidden = true;
         getAllListings()
+        print("view did appear")
+
     }
     func getAllListings(){
         
