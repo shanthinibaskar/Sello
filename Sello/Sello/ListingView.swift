@@ -21,7 +21,6 @@ class ListingView: UIViewController{
         detailsView.text = listing.description
         super.viewDidLoad()
     }
-    
 
     @IBAction func editListing(_ sender: Any) {
         let myVC = storyboard?.instantiateViewController(withIdentifier: "Create") as! CreateListingsView

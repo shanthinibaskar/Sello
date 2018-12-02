@@ -71,6 +71,9 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
             }
                 
             print(listing.url)
+            uploadImage(name: listing.url)
+
+            
         }
         
         navigationController?.popViewController(animated: true)
@@ -87,18 +90,18 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
             let imageRef = storageRef.child(listing.url)
             imageRef.delete { error in
                     print("made it")
-//                if let error = error {
-//                    print(error)
-//                }else{
-//                    let metaData = StorageMetadata()
-//                    metaData.contentType = "image/jpg"
-//                    storageRef.child("/\(name)/").putData(data, metadata: metaData){(metaData,error) in
-//                        if let error = error {
-//                            print(error.localizedDescription)
-//                            return
-//                        }
-//                    }
-//                }
+                if let error = error {
+                    print(error)
+                }else{
+                    let metaData = StorageMetadata()
+                    metaData.contentType = "image/jpg"
+                    storageRef.child("/\(name)/").putData(data, metadata: metaData){(metaData,error) in
+                        if let error = error {
+                            print(error.localizedDescription)
+                            return
+                        }
+                    }
+                }
             }
         }else{
         
