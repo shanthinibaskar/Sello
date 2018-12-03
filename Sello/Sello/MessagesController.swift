@@ -182,6 +182,7 @@ class MessagesController: UITableViewController {
     }
     
     func setupNavBarWithUser(_ user: User) {
+        print ("we got here!")
         messages.removeAll()
         messagesDictionary.removeAll()
         tableView.reloadData()
@@ -196,34 +197,47 @@ class MessagesController: UITableViewController {
         containerView.translatesAutoresizingMaskIntoConstraints = false
         titleView.addSubview(containerView)
         
-        //        let profileImageView = UIImageView()
-        //        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        //        profileImageView.contentMode = .scaleAspectFill
-        //        profileImageView.layer.cornerRadius = 20
-        //        profileImageView.clipsToBounds = true
-        //        if let profileImageUrl = user.profileImageUrl {
-        //            profileImageView.loadImageUsingCacheWithUrlString(profileImageUrl)
-        //        }
-        //
-        //        containerView.addSubview(profileImageView)
+                let profileImageView = UIImageView()
+                profileImageView.translatesAutoresizingMaskIntoConstraints = false
+                profileImageView.contentMode = .scaleAspectFill
+                profileImageView.layer.cornerRadius = 20
+                profileImageView.clipsToBounds = true
+                let storage = Storage.storage()
+                let profileRef = storage.reference().child(user.id ?? "XXXXX")
+                // Fetch the download URL
+                profileRef.downloadURL { url, error in
+                    if let error = error {
+                        print(error)
+                        
+                    } else {
+                        profileImageView.loadImageUsingCacheWithUrlString(url!)
+                    }
+                }
         
-        //ios 9 constraint anchors
-        //need x,y,width,height anchors
-        //        profileImageView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
-        //        profileImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
-        //        profileImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        //        profileImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+//                if let profileImageUrl = user.profileImageUrl {
+//                    profileImageView.loadImageUsingCacheWithUrlString(URL(string: profileImageUrl)!)
+//                    print ("we got a url \(profileImageUrl)")
+//                }
+        
+                containerView.addSubview(profileImageView)
+        
+//        ios 9 constraint anchors
+//        need x,y,width,height anchors
+                profileImageView.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
+                profileImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
+                profileImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+                profileImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
         let nameLabel = UILabel()
         
         containerView.addSubview(nameLabel)
         nameLabel.text = user.name
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        //need x,y,width,height anchors
-        //        nameLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 8).isActive = true
-        //        nameLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
-        //        nameLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-        //        nameLabel.heightAnchor.constraint(equalTo: profileImageView.heightAnchor).isActive = true
+//        need x,y,width,height anchors
+                nameLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 8).isActive = true
+                nameLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
+                nameLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
+                nameLabel.heightAnchor.constraint(equalTo: profileImageView.heightAnchor).isActive = true
         
         containerView.centerXAnchor.constraint(equalTo: titleView.centerXAnchor).isActive = true
         containerView.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
@@ -234,8 +248,21 @@ class MessagesController: UITableViewController {
     func showChatControllerForUser(_ user: User) {
         let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
         chatLogController.userid = user.id
-        print("hello")
-        navigationController?.pushViewController(chatLogController, animated: true)
+        let storage = Storage.storage()
+        let profileRef = storage.reference().child(user.id ?? "XXXX")
+        // Fetch the download URL
+        profileRef.downloadURL {url, error in
+            if let error = error {
+                print(error)
+                
+            } else {
+
+                chatLogController.storedURL = url
+                chatLogController.loadImage()
+                self.navigationController?.pushViewController(chatLogController, animated: true)
+            }
+        }
+        
     }
 }
 

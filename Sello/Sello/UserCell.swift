@@ -30,6 +30,7 @@ class UserCell: UITableViewCell {
     }
     
     fileprivate func setupNameAndProfileImage() {
+        print ("setupNameAndProfileImage")
         
         if let id = message?.chatPartnerId() {
             let ref = Database.database().reference().child("users").child(id)
@@ -38,9 +39,17 @@ class UserCell: UITableViewCell {
                 if let dictionary = snapshot.value as? [String: AnyObject] {
                     self.textLabel?.text = dictionary["name"] as? String
                     
-                    //                    if let profileImageUrl = dictionary["profileImageUrl"] as? String {
-                    //                        self.profileImageView.loadImageUsingCacheWithUrlString(profileImageUrl)
-                    //                    }
+                    let storage = Storage.storage()
+                    let profileRef = storage.reference().child(id)
+                    // Fetch the download URL
+                    profileRef.downloadURL { url, error in
+                        if let error = error {
+                            print(error)
+                            
+                        } else {
+                            self.profileImageView.loadImageUsingCacheWithUrlString(url!)
+                        }
+                    }
                 }
                 
             }, withCancel: nil)
