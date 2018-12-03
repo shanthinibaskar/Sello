@@ -1,12 +1,15 @@
 //
-//  CreateListingView.swift
+//  ListingView.swift
 //  Sello
 //
-//  Created by Devin Griffin on 11/15/18.
+//  Created by Devin Griffin on 11/29/18.
 //  Copyright © 2018 Sello. All rights reserved.
-// Icon color: 3E5A8F Icon background color: F6F7EC Category text color : ACA8A9
-
 //
+
+import UIKit
+import Foundation
+import Firebase
+
 extension UIColor { //from https://stackoverflow.com/a/48441178/7586688
     
     func image(_ size: CGSize = CGSize(width: 1, height: 1)) -> UIImage {
@@ -16,9 +19,6 @@ extension UIColor { //from https://stackoverflow.com/a/48441178/7586688
         }
     }
 }
-import UIKit
-import Foundation
-import Firebase
 
 class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
@@ -26,7 +26,7 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
     @IBOutlet weak var categories: UIView!
     var listings: [Listing] = []
     var imageDict: [String: UIImage] = [:]
-
+    
     
     @IBOutlet weak var collectionView: UICollectionView!
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -44,10 +44,10 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
         let myVC = storyboard?.instantiateViewController(withIdentifier: "ListingView") as! ListingView
         myVC.image = imageDict[listings[indexPath.row].url]
         myVC.listing = listings[indexPath.row]
-
+        
         
         navigationController?.pushViewController(myVC, animated: true)
-
+        
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "custom", for: indexPath) as! CustomCollectionCell
@@ -61,7 +61,7 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
         }else{
             cell.image.image = UIColor.white.image()
         }
-
+        
         return cell
     }
     func cacheImages(){
@@ -85,7 +85,7 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
         self.categories.isHidden = true;
         getAllListings()
         print("view did appear")
-
+        
     }
     func getAllListings(){
         
@@ -117,21 +117,18 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     func searchListings(search: String){
         if(search != ""){
-        var tempListings: [Listing] = []
-            var fullListings: [Listing] = []
-
-        for list in listings{
-            if((list.title.lowercased().range(of: search.lowercased())) != nil){
-                tempListings.append(list)
+            var tempListings: [Listing] = []
+            
+            for list in listings{
+                if((list.title.lowercased().range(of: search.lowercased())) != nil){
+                    tempListings.append(list)
+                }
             }
-        }
-            fullListings = listings
-        listings = tempListings
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
+            listings = tempListings
+            self.collectionView.delegate = self
+            self.collectionView.dataSource = self
             self.collectionView.reloadData()
-//            listings = fullListings
-
+            
         }
         
     }
@@ -157,8 +154,7 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
                     self.collectionView.delegate = self
                     self.collectionView.dataSource = self
                     self.collectionView.reloadData()
-
-//                    self.cacheImages()
+                    
                 }
         }
     }
@@ -179,13 +175,13 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
     @IBAction func furniture(_ sender: Any) {
         self.categories.isHidden = true;
         getListings(catergory: "Furniture")
-
+        
     }
     @IBAction func technology(_ sender: Any) {
         self.categories.isHidden = true;
         getListings(catergory: "Technology")
     }
-
+    
     @IBAction func other(_ sender: Any) {
         self.categories.isHidden = true;
         getListings(catergory: "Other")
@@ -200,8 +196,7 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
         }else{
             self.categories.isHidden = true;
         }
-
+        
     }
     
 }
-

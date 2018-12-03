@@ -19,15 +19,26 @@ class ListingView: UIViewController{
         chatLogController.userid = userid
         navigationController?.pushViewController(chatLogController, animated: true)
     }
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    @IBOutlet weak var chatButton: UIButton!
+    @IBOutlet weak var editButton: UIButton!
+    
     var listing: Listing!
     var image: UIImage!
     override func viewDidLoad() {
         imageView.image = image
         name.text = listing.title
         detailsView.text = listing.description
+        if(listing.userId != Auth.auth().currentUser?.uid ?? "XXXXX"){
+            editButton.isHidden = true;
+            deleteButton.isHidden = true;
+        }else{
+            chatButton.isHidden = true;
+        }
         super.viewDidLoad()
     }
-
+    
     @IBAction func editListing(_ sender: Any) {
         let myVC = storyboard?.instantiateViewController(withIdentifier: "Create") as! CreateListingsView
         myVC.listing = listing
@@ -35,14 +46,14 @@ class ListingView: UIViewController{
         myVC.editedImage = image
         navigationController?.popViewController(animated: true)
         navigationController?.pushViewController(myVC, animated: true)
-
+        
     }
     @IBAction func deleteListing(_ sender: Any) {
         let storage = Storage.storage()
         let storageRef = storage.reference()
         let imageRef = storageRef.child(listing.url)
         let db = Firestore.firestore()
-
+        
         imageRef.delete { error in
             if let error = error {
                 print(error)
@@ -56,6 +67,6 @@ class ListingView: UIViewController{
             }
         }
         navigationController?.popViewController(animated: true)
-
+        
     }
 }

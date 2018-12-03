@@ -50,26 +50,26 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         if let isImage = image{
             
         }else{
-           self.alert(name: "ERROR", message: "Upload an image for your listing before you try to submit!")
-return        }
-                let db = Firestore.firestore()
-                var ref: DocumentReference? = nil
+            self.alert(name: "ERROR", message: "Upload an image for your listing before you try to submit!")
+            return        }
+        let db = Firestore.firestore()
+        var ref: DocumentReference? = nil
         if(!editingListing){
-                ref = db.collection("listings").addDocument(data: [
-                    "userId": Auth.auth().currentUser?.uid ?? "XXXXX",
-                    "type": category,
-                    "title": name.text!,
-                    "description": desc.text!,
-                    "url": "www.fake.com"
-                ]) { err in
-                    if let err = err {
-                        print("Error adding document: \(err)")
-                    } else {
-                        print("Document added with ID: \(ref!.documentID)")
-                    }
+            ref = db.collection("listings").addDocument(data: [
+                "userId": Auth.auth().currentUser?.uid ?? "XXXXX",
+                "type": category,
+                "title": name.text!,
+                "description": desc.text!,
+                "url": "www.fake.com"
+            ]) { err in
+                if let err = err {
+                    print("Error adding document: \(err)")
+                } else {
+                    print("Document added with ID: \(ref!.documentID)")
                 }
+            }
             uploadImage(name: ref!.documentID)
-
+            
         }else{
             db.collection("listings").document(listing.url).updateData([
                 "type": category,
@@ -82,10 +82,10 @@ return        }
                     print("Document successfully updated")
                 }
             }
-                
+            
             print(listing.url)
             uploadImage(name: listing.url)
-
+            
             
         }
         
@@ -102,7 +102,7 @@ return        }
         if(editingListing){
             let imageRef = storageRef.child(listing.url)
             imageRef.delete { error in
-                    print("made it")
+                print("made it")
                 if let error = error {
                     print(error)
                 }else{
@@ -114,21 +114,21 @@ return        }
                             return
                         }
                         self.navigationController?.popViewController(animated: true)
-
+                        
                     }
                 }
             }
         }else{
-        
-        let metaData = StorageMetadata()
-        metaData.contentType = "image/jpg"
-        storageRef.child("/\(name)/").putData(data, metadata: metaData){(metaData,error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            self.navigationController?.popViewController(animated: true)
-
+            
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/jpg"
+            storageRef.child("/\(name)/").putData(data, metadata: metaData){(metaData,error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                self.navigationController?.popViewController(animated: true)
+                
             }
         }
     }
@@ -152,8 +152,8 @@ return        }
     }
     override func viewDidAppear(_ animated: Bool) {
         if(editingListing){
-        let index = categories.index(of: listing.type)
-        picker.selectRow(index!, inComponent: 0, animated: true)
+            let index = categories.index(of: listing.type)
+            picker.selectRow(index!, inComponent: 0, animated: true)
         }
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent  component: Int) {
@@ -164,4 +164,3 @@ return        }
         return categories[row]
     }
 }
-

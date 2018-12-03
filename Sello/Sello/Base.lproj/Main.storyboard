@@ -493,7 +493,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dfq-kh-9vG">
-                                <rect key="frame" x="58" y="386" width="258" height="154"/>
+                                <rect key="frame" x="58" y="423" width="258" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -507,7 +507,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dns-1f-WG1">
-                                <rect key="frame" x="120" y="548" width="45" height="30"/>
+                                <rect key="frame" x="86" y="570" width="45" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Delete"/>
                                 <connections>
@@ -515,7 +515,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TC7-vX-No6">
-                                <rect key="frame" x="225" y="548" width="30" height="30"/>
+                                <rect key="frame" x="255" y="570" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
@@ -527,7 +527,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCt-nY-FBM">
-                                <rect key="frame" x="171" y="457" width="33" height="30"/>
+                                <rect key="frame" x="171" y="570" width="33" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Chat"/>
                                 <connections>
@@ -540,7 +540,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="LHd-zi-tRg"/>
                     <connections>
+                        <outlet property="chatButton" destination="hCt-nY-FBM" id="L8j-eP-ejB"/>
+                        <outlet property="deleteButton" destination="dns-1f-WG1" id="JWK-sD-cM2"/>
                         <outlet property="detailsView" destination="Dfq-kh-9vG" id="VlA-Yp-qx7"/>
+                        <outlet property="editButton" destination="TC7-vX-No6" id="mCZ-6U-wfR"/>
                         <outlet property="imageView" destination="Kf1-FC-qrz" id="NPu-AH-VzA"/>
                         <outlet property="name" destination="v0u-wo-fna" id="eNB-Nw-fPB"/>
                     </connections>
