@@ -56,7 +56,7 @@ return        }
                 var ref: DocumentReference? = nil
         if(!editingListing){
                 ref = db.collection("listings").addDocument(data: [
-                    "userId": "xxxxxx",
+                    "userId": Auth.auth().currentUser?.uid ?? "XXXXX",
                     "type": category,
                     "title": name.text!,
                     "description": desc.text!,

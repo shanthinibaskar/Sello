@@ -67,11 +67,13 @@ class MessagesController: UITableViewController {
             
             let userId = snapshot.key
             
-            print(uid, userId)
+            print("hello", uid, "Wassup", userId)
             Database.database().reference().child("user-messages").child(uid).child(userId).observe(.childAdded, with: { (snapshot) in
                 
                 let messageId = snapshot.key
+                print(self.fetchMessageWithMessageId(messageId))
                 self.fetchMessageWithMessageId(messageId)
+                
                 
             }, withCancel: nil)
             
@@ -232,6 +234,7 @@ class MessagesController: UITableViewController {
     func showChatControllerForUser(_ user: User) {
         let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
         chatLogController.userid = user.id
+        print("hello")
         navigationController?.pushViewController(chatLogController, animated: true)
     }
 }
