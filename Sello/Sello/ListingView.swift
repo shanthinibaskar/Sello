@@ -20,7 +20,9 @@ class ListingView: UIViewController{
         let storage = Storage.storage()
         let profileRef = storage.reference().child(userid)
         // Fetch the download URL
+        chatLogController.userid = userid
         profileRef.downloadURL {url, error in
+            
             if let error = error {
                 print(error)
                 self.navigationController?.pushViewController(chatLogController, animated: true)
@@ -28,7 +30,7 @@ class ListingView: UIViewController{
                 
                 chatLogController.storedURL = url
                 chatLogController.loadImage()
-                chatLogController.userid = userid
+                
                 self.navigationController?.pushViewController(chatLogController, animated: true)
             }
         }
