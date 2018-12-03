@@ -21,6 +21,7 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         return 1
     }
     
+    @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var submit: UIButton!
     @IBOutlet weak var name: UITextField!
     
@@ -33,6 +34,8 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     @IBAction func selectPicture(_ sender: Any) {
         ImagePickerManager().pickImage(self){ image in
             self.image = image
+            self.imagePreview.image = image
+
         }
     }
     
@@ -140,6 +143,7 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         if(!editingListing){
             ImagePickerManager().pickImage(self){ image in
                 self.image = image
+                self.imagePreview.image = image
             }
         }else{
             submit.setTitle("Update Listing", for: UIControlState.normal)
