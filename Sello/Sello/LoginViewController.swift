@@ -154,8 +154,6 @@ class LoginViewController: UIViewController {
                                 self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
                                 self.dismiss(animated: true, completion: nil)
                             })
-                            print("Email Sent")
-                            self.alert(name: "Email is Sent", message: "Verify Email to Log in")
                         }
                         
                     }
