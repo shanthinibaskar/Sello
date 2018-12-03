@@ -15,8 +15,10 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
         }
     }
     
-    var messages = [Message]()
+    var storedURL: URL?
     
+    var messages = [Message]()
+    var storedImage: UIImage?
     func observeMessages() {
         guard let uid = Auth.auth().currentUser?.uid, let toId = userid else {
             return
@@ -55,9 +57,22 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     }()
     
     let cellId = "cellId"
-    
+    public func loadImage(){
+        if let loadURL = storedURL{
+            do{
+                let data = try Data(contentsOf: loadURL)
+                storedImage = UIImage(data: data)
+            }
+            catch{
+                return
+            }
+            
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         collectionView?.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
         //        collectionView?.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
@@ -169,10 +184,21 @@ class ChatLogController: UICollectionViewController, UITextFieldDelegate, UIColl
     }
     
     fileprivate func setupCell(_ cell: ChatMessageCell, message: Message) {
-        //        if let profileImageUrl = self.user?.profileImageUrl {
-        //            cell.profileImageView.loadImageUsingCacheWithUrlString(profileImageUrl)
+        // Create a reference to the file you want to download
+        //        let storage = Storage.storage()
+        //        let profileRef = storage.reference().child(self.userid!)
+        //        profileRef.downloadURL { url, error in
+        //            if let error = error {
+        //                    print(error)
+        //
+        //            } else {
+        //                cell.profileImageView.loadImageUsingCacheWithUrlString(url!)
+        //            }
         //        }
-        
+        if let imageExists = storedImage{
+            print("Gets Here")
+            cell.profileImageView.image = imageExists
+        }
         if message.fromId == Auth.auth().currentUser?.uid {
             //outgoing blue
             cell.bubbleView.backgroundColor = ChatMessageCell.blueColor

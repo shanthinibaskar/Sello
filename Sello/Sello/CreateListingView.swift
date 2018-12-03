@@ -50,11 +50,13 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     }
     
     @IBAction func createListing(_ sender: Any) {
+        if name.text == "" || desc.text == ""{self.alert(name: "ERROR", message: "Missing Values in Fields")}
         if let isImage = image{
             
         }else{
             self.alert(name: "ERROR", message: "Upload an image for your listing before you try to submit!")
             return        }
+ 
         let db = Firestore.firestore()
         var ref: DocumentReference? = nil
         if(!editingListing){
@@ -85,8 +87,6 @@ class CreateListingsView: UIViewController,UIPickerViewDelegate, UIPickerViewDat
                     print("Document successfully updated")
                 }
             }
-            
-            print(listing.url)
             uploadImage(name: listing.url)
             
             

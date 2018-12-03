@@ -17,8 +17,21 @@ class ListingView: UIViewController{
     @IBAction func chat(_ sender: Any) {
         let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
         let userid = listing.userId
-        chatLogController.userid = userid
-        navigationController?.pushViewController(chatLogController, animated: true)
+        let storage = Storage.storage()
+        let profileRef = storage.reference().child(userid)
+        // Fetch the download URL
+        profileRef.downloadURL {url, error in
+            if let error = error {
+                print(error)
+                
+            } else {
+                
+                chatLogController.storedURL = url
+                chatLogController.loadImage()
+                chatLogController.userid = userid
+                self.navigationController?.pushViewController(chatLogController, animated: true)
+            }
+        }
     }
     @IBOutlet weak var deleteButton: UIButton!
     
@@ -68,6 +81,7 @@ class ListingView: UIViewController{
     }
     
     
+    @IBOutlet weak var favoritesButton: UIButton!
     var listing: Listing!
     var image: UIImage!
     override func viewDidLoad() {
@@ -79,6 +93,7 @@ class ListingView: UIViewController{
             deleteButton.isHidden = true;
         }else{
             chatButton.isHidden = true;
+            favoritesButton.isHidden = true;
         }
         super.viewDidLoad()
     }
