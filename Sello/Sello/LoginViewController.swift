@@ -22,7 +22,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var schoolTextField: UITextField!
     
     var isLogin:Bool = true
-    
+    var alertNow: Bool = false {
+        didSet {
+            print("alertNow Set")
+            alert(name: "Email Sent", message: "Please verify your account to log in")
+        }
+    }
+
     @IBAction func `switch`(_ sender: Any) {
 
         switch switchButton.selectedSegmentIndex{
@@ -252,8 +258,9 @@ class LoginViewController: UIViewController {
             //            self.messagesController?.fetchUserAndSetupNavBarTitle()
             //            self.messagesController?.navigationItem.title = values["name"] as? String
             let user = User(dictionary: values)
-            
+            self.alertNow = !self.alertNow
         })
+        
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

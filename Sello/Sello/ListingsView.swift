@@ -26,7 +26,7 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
     @IBOutlet weak var categories: UIView!
     var listings: [Listing] = []
     var imageDict: [String: UIImage] = [:]
-    
+    var canClick = false
     
     @IBOutlet weak var collectionView: UICollectionView!
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -41,12 +41,15 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let myVC = storyboard?.instantiateViewController(withIdentifier: "ListingView") as! ListingView
-        myVC.image = imageDict[listings[indexPath.row].url]
-        myVC.listing = listings[indexPath.row]
+        if canClick{
+            let myVC = storyboard?.instantiateViewController(withIdentifier: "ListingView") as! ListingView
+            myVC.image = imageDict[listings[indexPath.row].url]
+            myVC.listing = listings[indexPath.row]
+            
+            
+            navigationController?.pushViewController(myVC, animated: true)
+        }
         
-        
-        navigationController?.pushViewController(myVC, animated: true)
         
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -90,6 +93,9 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
         print("view did appear")
         
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        canClick = false
+    }
     func getAllListings(){
         
         listings = []
@@ -115,6 +121,7 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
                     self.collectionView.dataSource = self
                     print("Listing size is: \(self.listings.count)")
                     self.cacheImages()
+                    self.canClick = true
                 }
         }
     }
