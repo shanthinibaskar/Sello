@@ -43,9 +43,7 @@ class MessagesController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
-        
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(handleNewMessage))
+
         
         checkIfUserIsLoggedIn()
         
@@ -230,8 +228,10 @@ class MessagesController: UITableViewController {
     }
     
     func showChatControllerForUser(_ user: User) {
+        print ("showChatControllerForUser")
         let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
         chatLogController.userid = user.id
+        print ("we reached here")
         navigationController?.pushViewController(chatLogController, animated: true)
     }
 }
