@@ -121,9 +121,23 @@ class LoginViewController: UIViewController {
                             guard let uid = res?.user.uid else {
                                 return
                             }
-                            
+                            let db = Firestore.firestore()
+                            var ref1: DocumentReference? = nil
+                            let tempFavorites = [""]
+                            ref1 = db.collection("Favorites").addDocument(data: [
+                                "userId": Auth.auth().currentUser?.uid ?? "XXXXX",
+                                "favorites": tempFavorites,
+                                
+                            ]) { err in
+                                if let err = err {
+                                    print("Error adding document: \(err)")
+                                } else {
+                                    print("Document added with ID: \(ref1!.documentID)")
+                                }
+                            }
                             let ref = Database.database().reference()
                             let usersReference = ref.child("users").child(uid)
+                            
                             let values = ["name": name, "email": userEmail, "school": schoolName]
                             usersReference.updateChildValues(values, withCompletionBlock: { (err, ref) in
                                 

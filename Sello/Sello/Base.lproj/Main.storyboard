@@ -384,6 +384,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="f2c-Ds-27h">
                         <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Qh3-bc-jqn">
+                            <rect key="frame" x="156.5" y="7" width="62" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Favorites"/>
+                            <connections>
+                                <action selector="showFavorites:" destination="eKQ-kq-it3" eventType="touchUpInside" id="eoW-G3-76s"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="3Yt-Hq-crW">
                             <connections>
                                 <action selector="categories:" destination="eKQ-kq-it3" id="Xsy-YL-wNs"/>
@@ -538,6 +546,14 @@
                                 </state>
                                 <connections>
                                     <action selector="chat:" destination="zQB-sj-PAu" eventType="touchUpInside" id="cOy-04-Rtf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wSw-Va-2IY">
+                                <rect key="frame" x="160" y="591" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Favorite"/>
+                                <connections>
+                                    <action selector="favoriteListing:" destination="zQB-sj-PAu" eventType="touchUpInside" id="alw-rU-Jc3"/>
                                 </connections>
                             </button>
                         </subviews>

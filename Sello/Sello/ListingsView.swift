@@ -58,7 +58,10 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
             cell.image.layer.borderWidth = 3.0
             cell.image.layer.borderColor = UIColor.white.cgColor
             cell.image.layer.masksToBounds = true
+            print("there is a valid image for \(indexPath.row)")
         }else{
+            print("there is NOOOOOOOO valid image for \(indexPath.row)")
+
             cell.image.image = UIColor.white.image()
         }
         
@@ -133,7 +136,62 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
         
     }
     
+    @IBAction func showFavorites(_ sender: Any) {
+        getFavorites()
+    }
+    
+    
+    
+    func getFavorites(){
+        print("before listings")
+        print(listings)
+        listings = []
+        let db = Firestore.firestore()
+        let decoder = JSONDecoder()
+        var favorites: Favorites!
+        db.collection("Favorites").whereField("userId", isEqualTo: Auth.auth().currentUser?.uid ?? "XXXXX")
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        if let data = try?  JSONSerialization.data(withJSONObject: document.data(), options: []) {
+                            favorites = try? decoder.decode(Favorites.self, from: data)
+                            print(favorites);
+                        }
+                    }
+                    print("made it between")
+                    
+                    for favorite in favorites.favorites{
+                        if(favorite != ""){
+                            let docRef = db.collection("listings").document(favorite)
+                            docRef.getDocument { (document, error) in
+                                if let data = try?  JSONSerialization.data(withJSONObject: document!.data(), options: []) {
+                                    var listingTemp = try? decoder.decode(Listing.self, from: data)
+                                    listingTemp!.url = document?.documentID ?? "123123123123"
+
+                                    self.listings.append(listingTemp!)
+                                    self.collectionView.reloadData()
+
+                                }
+                            }
+                        }
+                    }
+                    self.collectionView.delegate = self
+                    self.collectionView.dataSource = self
+                    self.collectionView.reloadData()
+                    print("after code went down")
+                    print(self.listings)
+                    print("closed")
+
+
+                    
+
+                }
+        }
+    }
     func getListings(catergory: String){
+        
         listings = []
         let db = Firestore.firestore()
         let decoder = JSONDecoder()
@@ -149,7 +207,7 @@ class ListingsView: UIViewController, UICollectionViewDataSource, UICollectionVi
                             self.listings.append(listing!);
                             
                         }
-                        
+                    
                     }
                     self.collectionView.delegate = self
                     self.collectionView.dataSource = self

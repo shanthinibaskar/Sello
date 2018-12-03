@@ -13,6 +13,7 @@ class ListingView: UIViewController{
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var detailsView: UILabel!
+    var favorites: Favorites!
     @IBAction func chat(_ sender: Any) {
         let chatLogController = ChatLogController(collectionViewLayout: UICollectionViewFlowLayout())
         let userid = listing.userId
@@ -23,6 +24,49 @@ class ListingView: UIViewController{
     
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
+    
+    
+    @IBAction func favoriteListing(_ sender: Any) {
+        let db = Firestore.firestore()
+        let decoder = JSONDecoder()
+        var docID = ""
+        db.collection("Favorites").whereField("userId", isEqualTo: Auth.auth().currentUser?.uid ?? "XXXXX")
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        if let data = try?  JSONSerialization.data(withJSONObject: document.data(), options: []) {
+                            self.favorites = try? decoder.decode(Favorites.self, from: data)
+                            print(self.favorites);
+                            docID = document.documentID
+                            if(self.favorites.favorites.contains(self.listing.url) == false){
+                        self.favorites.favorites.append(self.listing.url)
+                            }else{
+                                let index = self.favorites.favorites.firstIndex(of: self.listing.url)
+                                self.favorites.favorites.remove(at: index!)
+
+                            }
+                        }
+                        
+                    }
+                    print(self.favorites.favorites)
+                    db.collection("Favorites").document(docID).updateData([
+                        "favorites": self.favorites.favorites,
+                        
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("Document successfully updated")
+                        }
+                    }
+                   
+                    
+                }
+        }
+    }
+    
     
     var listing: Listing!
     var image: UIImage!
