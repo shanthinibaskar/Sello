@@ -224,21 +224,8 @@ class MessagesController: UITableViewController {
         profileImageView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         profileImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
         profileImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
-//        let nameLabel = UILabel()
-//
-//        containerView.addSubview(nameLabel)
-//        nameLabel.text = user.name
-//        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        //        need x,y,width,height anchors
-//        nameLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 8).isActive = true
-//        nameLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor).isActive = true
-//        nameLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
-//        nameLabel.heightAnchor.constraint(equalTo: profileImageView.heightAnchor).isActive = true
-        
         containerView.centerXAnchor.constraint(equalTo: titleView.centerXAnchor).isActive = true
         containerView.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
-        
         self.navigationItem.titleView = titleView
     }
     
@@ -251,6 +238,7 @@ class MessagesController: UITableViewController {
         profileRef.downloadURL {url, error in
             if let error = error {
                 print(error)
+                self.navigationController?.pushViewController(chatLogController, animated: true)
                 
             } else {
                 

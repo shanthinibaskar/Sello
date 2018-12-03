@@ -23,7 +23,7 @@ class ListingView: UIViewController{
         profileRef.downloadURL {url, error in
             if let error = error {
                 print(error)
-                
+                self.navigationController?.pushViewController(chatLogController, animated: true)
             } else {
                 
                 chatLogController.storedURL = url
